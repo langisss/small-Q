@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小Q烘焙 | 新鲜烘焙每日现做</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 主题色 */
+        :root {
+            --primary-color: #f4a261;
+            --secondary-color: #145ec5;
+        }
+
+        /* 导航栏 */
+        nav {
+            background-color: #fff8f0;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center; /* 确保 logo 和其他导航项垂直居中 */
+}
+
+nav li {
+    margin: 0 2rem;
+}
+
+/* 将 logo 放在最右侧 */
+nav li.logo {
+    margin-left: auto; /* 将 logo 推到最右侧 */
+    margin-right: 1rem; /* 添加一些右边距 */
+}
+
+nav li.logo img {
+    height: 40px; /* 设置 logo 高度 */
+    width: auto; /* 宽度自适应 */
+    border-radius: 5px; /* 可选：给 logo 添加圆角 */
+}
+        /* 主页横幅 */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url("https://c.wallhere.com/photos/93/5e/toasts_bread_honey_tea-1096811.jpg!d");
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* 产品展示 */
+        .products {
+            padding: 4rem 2rem;
+            background-color: #ebc01355;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #f9f2ef;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product-card h3 {
+            margin: 1rem 0 0.5rem;
+        }
+
+        .product-card p {
+            color: #666;
+        }
+
+        /* 产品介绍页面 */
+        .product-detail {
+            padding: 4rem 2rem;
+            background-color: #fff8f0;
+            text-align: center;
+        }
+
+        .product-detail img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .products h2 {
+    color: #654321; /* 深棕色 */
+    font-size: 2.5rem; /* 字体稍微放大 */
+    margin-bottom: 2rem; /* 可以根据需要调整底部外边距 */
+}
+
+        .product-detail p {
+            font-size: 1.2rem;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .product-detail a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-detail a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* 联系方式 */
+        .contact {
+            background-color: #f5f5f5; /* 灰色背景 */
+            padding: 2rem;
+            text-align: left; /* 左对齐 */
+            color: #666; /* 灰色文字 */
+        }
+
+        .contact h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact {
+                text-align: center; /* 在小屏幕上居中 */
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#products">产品</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">联系</a></li>
+            <li class="logo">
+                <img src="C:\Users\86159\Desktop\logo.jpg" alt="小Q烘焙 Logo" style="height: 45px;">
+            </li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>欢迎来到小Q烘焙</h1>
+            <p>每日新鲜烘焙，用心制作每一份甜蜜</p>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>明星产品</h2>
+        <div class="product-grid">
+            <div class="product-card" onclick="window.location.href='#product1'">
+                <img src="https://c.wallhere.com/photos/14/da/food_bread_wheat-1978289.jpg!d" alt="法式面包">
+                <h3>传统法棍</h3>
+                <p>经典法式工艺，外脆内软</p>
+            </div>
+            <div class="product-card" onclick="window.location.href='#product2'">
+                <img src="https://c.wallhere.com/photos/16/f2/food_salad_sandwich_vegetables_bread_sausage_cheese_Pepper-1961729.jpg!d" alt="厚切三明治">
+                <h3>厚切三明治</h3>
+                <p>新鲜制作，减脂必备</p>
+            </div>
+            <div class="product-card" onclick="window.location.href='#product3'">
+                <img src="https://c.wallhere.com/images/68/b5/daab9dc8d293b83396b68504ab96-2242126.png!d" alt="蛋糕">
+                <h3>各种蛋糕</h3>
+                <p>定制专属甜蜜回忆</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品介绍页面 -->
+    <section class="product-detail" id="product1">
+        <img src="https://c.wallhere.com/photos/14/da/food_bread_wheat-1978289.jpg!d" alt="法式面包">
+        <h2>传统法棍</h2>
+        <p>
+            我们的传统法棍采用经典法式烘焙工艺，精选优质小麦粉和天然酵母，经过长时间发酵，外皮酥脆，内里柔软，口感层次丰富。每一根法棍都经过精心烘焙，确保其金黄的外表和独特的香气。<br><br>
+            法棍不仅是法国餐桌上的经典主食，也是搭配各种菜肴的完美选择。无论是搭配黄油、果酱，还是用来制作三明治，都能带来极致的美味体验。<br><br>
+            适合场合：早餐、下午茶、家庭聚餐。
+        </p>
+        <a href="#products">返回产品列表</a>
+    </section>
+
+    <section class="product-detail" id="product2">
+        <img src="https://c.wallhere.com/photos/16/f2/food_salad_sandwich_vegetables_bread_sausage_cheese_Pepper-1961729.jpg!d" alt="厚切三明治">
+        <h2>厚切三明治</h2>
+        <p>
+            我们的厚切三明治采用新鲜的全麦面包，搭配优质的火腿、奶酪和新鲜蔬菜，每一口都能感受到丰富的层次感和健康的美味。<br><br>
+            三明治的每一层都经过精心挑选和搭配，确保营养均衡，适合追求健康饮食的您。无论是作为午餐还是下午茶，厚切三明治都能为您提供充足的能量和满足感。<br><br>
+            适合场合：午餐、野餐、办公室便当。
+        </p>
+        <a href="#products">返回产品列表</a>
+    </section>
+
+    <section class="product-detail" id="product3">
+        <img src="https://c.wallhere.com/images/68/b5/daab9dc8d293b83396b68504ab96-2242126.png!d" alt="蛋糕">
+        <h2>各种蛋糕</h2>
+        <p>
+            我们提供多种口味的蛋糕，包括经典的巧克力蛋糕、香草蛋糕、草莓蛋糕等，每一款蛋糕都采用新鲜的原料和独特的配方，确保口感细腻、香甜可口。<br><br>
+            无论是生日、婚礼还是其他特殊场合，我们的蛋糕都能为您带来甜蜜的回忆。您还可以根据个人喜好定制蛋糕的尺寸和装饰，打造专属的甜蜜时刻。<br><br>
+            适合场合：生日派对、婚礼、周年纪念。
+        </p>
+        <a href="#products">返回产品列表</a>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact" id="contact">
+        <h2>联系方式</h2>
+        <p>地址：小Q路123号</p>
+        <p>电话：(021) 1234-5678</p>
+        <p>营业时间：每日 8:00 - 20:00</p>
+    </section>
+
+    <footer>
+        <p>© 2025 小Q烘焙 保留所有权利</p>
+    </footer>
+</body>
+</html>
